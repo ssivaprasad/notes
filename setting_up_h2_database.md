@@ -6,7 +6,7 @@ and go into the **bin** folder of unzipped h2 database
 
 ### **Create Database and User**
 Run the below command to create new databse called **testdb** with user **user1**
-######  java -cp h2-1.4.200.jar org.h2.tools.Script -url "jdbc:h2:~/.h2/testdb/testdb" -user "user1" -script "~/.h2/testdb/testdb_backup.sql"
+######  ```java -cp h2-1.4.200.jar org.h2.tools.Script -url "jdbc:h2:~/.h2/testdb/testdb" -user "user1" -script "~/.h2/testdb/testdb_backup.sql"```
 
 
 Above command creates ```testdb``` in folder ```.h2/testdb``` of users home directory.
@@ -29,3 +29,7 @@ spring.datasource.password =
 spring.h2.console.enabled=true
 spring.jpa.hibernate.ddl-auto=create
 spring.jpa.show-sql=true```
+
+
+References:
+https://www.dev2qa.com/h2-database-tutorial/
