@@ -29,7 +29,3 @@ spring.datasource.password =
 spring.h2.console.enabled=true
 spring.jpa.hibernate.ddl-auto=create
 spring.jpa.show-sql=true```
-
-
-References:
-https://www.dev2qa.com/h2-database-tutorial/
