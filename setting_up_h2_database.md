@@ -19,7 +19,8 @@ Run the below command to open H2 Console ```java -jar h2-1.4.200.jar```
 
 Use the below properties to connecto to created h2 database
 
-```spring.datasource.url=jdbc:h2:~/.h2/testdb/testdb;AUTO_SERVER=TRUE
+```
+spring.datasource.url=jdbc:h2:~/.h2/testdb/testdb;AUTO_SERVER=TRUE
 spring.datasource.driverClassName=org.h2.Driver
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
 
@@ -28,4 +29,5 @@ spring.datasource.password =
 
 spring.h2.console.enabled=true
 spring.jpa.hibernate.ddl-auto=create
-spring.jpa.show-sql=true```
+spring.jpa.show-sql=true
+```
