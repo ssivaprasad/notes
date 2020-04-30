@@ -2,4 +2,6 @@
 
 [Creating .md Files](https://guides.github.com/features/mastering-markdown/)
 
-[Setting H2 Database](https://github.com/ssivaprasad/notes/blob/master/setting_up_h2_database.md)
+[Setting Up MariaDb](https://github.com/ssivaprasad/notes/blob/master/setting_up_mariadb.md)
+
+[Setting Up H2 Database](https://github.com/ssivaprasad/notes/blob/master/setting_up_h2_database.md)
