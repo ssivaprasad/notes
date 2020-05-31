@@ -1,0 +1,8 @@
+calc												Displays calender
+date												Displays current date and time
+hostname											Displays name of  the system
+hostname -i											Displays ip addrees of the system
+uname												Displays the operating system name
+uname -m											Displays architecture of the system
+uname -a											Displays all information about System(liken OS, architecture, OS flaour..etc)
+man <command_name>

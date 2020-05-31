@@ -1,0 +1,2 @@
+https://sdkman.io/install
+https://www.udemy.com/course/apache-groovy/learn/lecture/4541924#overview

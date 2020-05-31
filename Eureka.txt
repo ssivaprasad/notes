@@ -1,0 +1,88 @@
+The status page and health indicators for a Eureka instance default to /info and /health respectively, 
+which are the default locations of useful endpoints in a Spring Boot Actuator application. 
+You need to change these, even for an Actuator application if you use a non-default context path or servlet path (such as server.servletPath=/custom). 
+The following example shows the default values for the two settings:
+
+eureka:
+  instance:
+    statusPageUrlPath: ${server.servletPath}/info
+    healthCheckUrlPath: ${server.servletPath}/health
+	
+----------------------------------------------
+
+If your app wants to be contacted over HTTPS, you can set two flags in the EurekaInstanceConfig:
+
+eureka.instance.[nonSecurePortEnabled]=[false]
+eureka.instance.[securePortEnabled]=[true]
+
+Doing so makes Eureka publish instance information that shows an explicit preference for secure communication. 
+The Spring Cloud DiscoveryClient always returns a URI starting with https for a service configured this way. 
+Similarly, when a service is configured this way, the Eureka (native) instance information has a secure health check URL.
+
+-----------------------------------------------
+
+Because of the way Eureka works internally, it still publishes a non-secure URL for the status 
+and home pages unless you also override those explicitly.
+You can use placeholders to configure the eureka instance URLs, as shown in the following example:
+
+eureka:
+  instance:
+    statusPageUrl: https://${eureka.hostname}/info
+    healthCheckUrl: https://${eureka.hostname}/health
+    homePageUrl: https://${eureka.hostname}/
+	
+(Note that ${eureka.hostname} is a native placeholder only available in later versions of Eureka. 
+You could achieve the same thing with Spring placeholders as well — for example, by using ${eureka.instance.hostName}.)
+
+
+------------------------------------------------------
+
+By default, Eureka uses the client heartbeat to determine if a client is up. 
+Unless specified otherwise, the Discovery Client does not propagate the current health check status of the application, 
+per the Spring Boot Actuator. Consequently, after successful registration, Eureka always announces that the application is in 'UP' state.
+ This behavior can be altered by enabling Eureka health checks, which results in propagating application status to Eureka. 
+ As a consequence, every other application does not send traffic to applications in states other then 'UP'. 
+ The following example shows how to enable health checks for the client:
+ 
+ eureka:
+  client:
+    healthcheck:
+      enabled: true
+	  
+	  
+------------------------------------------------------
+
+A vanilla Netflix Eureka instance is registered with an ID that is equal to its host name (that is, there is only one service per host). 
+Spring Cloud Eureka provides a sensible default, which is defined as follows:
+
+${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+
+An example is myhost:myappname:8080.
+
+By using Spring Cloud, you can override this value by providing a unique identifier in eureka.instance.instanceId, 
+as shown in the following example:
+
+application.yml
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+	
+	
+------------------------------------------------------
+
+Why Is It so Slow to Register a Service?
+Being an instance also involves a periodic heartbeat to the registry (through the client’s serviceUrl) with a default duration of 30 seconds. 
+A service is not available for discovery by clients until the instance, the server,
+ and the client all have the same metadata in their local cache (so it could take 3 heartbeats). 
+ You can change the period by setting eureka.instance.leaseRenewalIntervalInSeconds. 
+ Setting it to a value of less than 30 speeds up the process of getting clients connected to other services. 
+ In production, it is probably better to stick with the default, 
+ because of internal computations in the server that make assumptions about the lease renewal period.
+ 
+------------------------------------------------------
+
+Refreshing Eureka Clients
+By default, the EurekaClient bean is refreshable, meaning the Eureka client properties can be changed and refreshed.
+When a refresh occurs clients will be unregistered from the Eureka server and there might be a brief moment of time where 
+all instance of a given service are not available. One way to eliminate this from happening is to disable the ability to refresh Eureka clients. 
+To do this set eureka.client.refresh.enable=false.

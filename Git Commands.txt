@@ -1,0 +1,66 @@
+git config user.name "sivaprasads"
+git config user.email somarouthu.sivaprasads@gmail.com
+
+
+git remote add origin https://github.com/ssivaprasad/master-git.git
+git branch --set-upstream
+git branch --unset-upstream
+
+git log --oneline
+
+git pull origin <Branch_name>						To pull code from branch
+git push origin <Branch_name>						To push code to central repo branch
+
+git add <File_name>									To add file to staging area
+git add . 											To add all files in current working directory
+
+git commit -m <Commit_Message>						To commit all stagged file to local git repo
+
+git restore <File_name> 							To discard changes in working directory which are not stagged
+git restore --staged <File_name>					To unstage to file
+
+git branch <Branch_name>							To create new branch
+git branch -d <Branch_name>							To delete a branch
+git checkout <Branch_name>							To checkout branch
+git checkout -b <Branch_name>						To create to checkout a new branch
+
+git merge <Source_branch> <destination_branch>		To merge source branch to destination branch branch.
+													All Changes from source branch will be merged into destination branch.
+													destination branch is optional.
+													If we dont specify destination branch git takees current active branch as destination branch
+
+git cherry-pick <commitid>							To merge specific commit to current active branch
+git cherry-pick --abort								To abort current cherry-pick incase of conflicts
+													To restore to git repo verion which was before currentcherry-pick started. 
+git cherry-pick --continue							To continue current cherry-pick operation after resolving conflicts											
+
+git push -u -all									Changes from all branches will be pushed to central repo
+
+
+git stash 											To stash all changes from current working branch
+git stash list										To list all stashes avaliable
+git stash pop										To reapply changes and remove stash
+git stash drop	stash@{num}							To drop last stash
+													If we dont specify stash number it drop s latest stash.
+git stash apply stash@{num}							To apply a specific stash.
+													If we dont specify stash number it applies latest stash.
+git stash -u										By default git stashes only tracked files
+													If we want to include untracked files as well then specify -u option.
+git stash save "<stash_message>"					Saves stash with specified message
+git stash clear										To clear stash
+
+
+git reset <File_name>								To revert uncomitted changes
+git reset --soft
+git reset --mixed									To reset changes from statging area. But changes still exists in working directory.
+git reset --hard									To reset changes from statging area as well as from working directory.
+
+git revert <Commit_id>
+git checkout <Commit_id>
+
+git clean -n										Displays all untracked file which will be removed by git clean (dry run)
+git clean -f										Removes all untracked files by git
+
+git tag -a <tag_name> -m '<comment>' <commitid>		To create a tag 
+git tag												To display all tags avaliable
+git show <tag_name>									To display tag information

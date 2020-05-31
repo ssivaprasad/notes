@@ -1,0 +1,88 @@
+Start Zookeeper: 		bin\windows\zookeeper-server-start.bat config/zookeeper.properties
+Start Kafka: 			bin\windows\kafka-server-start.bat config/server.properties
+
+Create Topic:  			kafka-topics --zookeeper 127.0.0.1:2181 --topic topic__1 --create --partitions 3 --replication-factor 2
+List Topics:  			kafka-topics --zookeeper 127.0.0.1:2181 --list
+Desc Topic: 			kafka-topics --zookeeper 127.0.0.1:2181 --topic 1__topic --describe
+Delete Topic: 			kafka-topics --zookeeper 127.0.0.1:2181 --topic 1__topic --delete
+
+Produce Data:			kafka-console-producer --broker-list 127.0.0.1:9092 --topic 1__topic
+						kafka-console-producer --broker-list 127.0.0.1:9092 --topic 1__topic --producer-property acks=all
+						kafka-console-producer --broker-list 127.0.0.1:9092 --topic 1__topic_new
+						
+Consume Data:			kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic 1__topic
+						kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic 1__topic --from-beginning
+						kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic 1__topic --group group__1
+						
+Consumer Groups:		kafka-consumer-groups --bootstrap-server localhost:9092 --list
+						kafka-consumer-groups --bootstrap-server localhost:9092 --group group__1
+						
+Rest Offsets:			kafka-consumer-groups --bootstrap-server localhost:9092 --group group__1 --reset-offsets --to-earlist --execute --topic 1__topic
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+	
+	
+	

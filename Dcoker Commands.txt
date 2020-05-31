@@ -1,0 +1,65 @@
+cat /etc/*os*rel*								                        // Gives information about the OS which is current running docker container
+
+
+docker run <image_name>								                    // Run docker Image i.e create docker container
+docker run -t ubuntu								                    // Run docker image and attach it to terminal
+docker run -it ubuntu								                    // Run docker image in interractive mode and attach it to the terminal
+docker run -it ubuntu /bin/bash							                // Run docker image in interractive mode and execute specified command
+
+docker run --name <container_name> -it ubuntu /bin/bash		            // Create create and run a docker container with specified name
+docker start <container_name / id>						                // Start a stopped docker container
+docker attach <container_name / id>						                // attach started container to terminal
+
+docker run --name container2 -d ubuntu		 				            // Run docker container as a daemon
+docker run --name container2 -d ubuntu 
+		//bin/sh -c "while true; do echo hello world; sleep 1; done"
+
+docker logs -f <container_name> 						                // Fetch the log a running docker container
+docker top <container_name>							                    // Lists all proccessed running inside docker container
+
+docker stop <container_name>							                // Stop docker container by id
+docker rm <container_name>							                    // delete docker container by id
+
+docker ps									                            // Lists a docker containers which are currently running
+docker ps -a 									                        // Lists all containers available in our machine whether that could be running or stopped
+
+docker inspect <container_name>							                // Gives complete information about docker container
+docker inspect --format
+        {{.NetworkSettings.IPAddress}} <container_name>
+
+docker exec <container_name> ls							                // Run a command inside container without attaching
+
+docker stats <container_name>							                // Shows live resource utilization of container
+
+docker events									                        // Shows live events happening on docker
+docker events --filter event=attach						                // Filter live events
+docker events --filter 
+	[container | event | image | label 
+	| type | volume | network | daemon]
+docker events ---since '1h'							                    // Display all events from 1 hour
+
+docker run -p <host_port_number>:<container_port_number> nginx:latest   // Port mapping between host and container
+
+
+docker run -it -v /usr/data ubuntu						                // To create volume
+docker run --name testcon11 -it -v /usr/data ubuntu				        // to create voume
+docker run --name testcon22 -it -v /usr/data ubuntu	
+			-volumes-from testcon11 ubtuntu				                // To share volume across containers(i.e. testcon22, testcon11)
+
+docker run --name testcon33 -it -v /usr/data ubuntu	
+		-volumes-from testcon11 -volumes-from testcon22 ubtuntu		    // To share volume across containers(i.e. testcon33, testcon22, testcon11)
+
+docker run -it --name <container_name> 
+		-v <host_path>:<container_shared_location_path>			        // To share volume between host and container
+			
+docker run --previlges=true -it -v /usr/data ubuntu	
+		-volumes-from testcon11 ubtuntu
+
+
+docker rename <src> <dest>							                    // To rename a container
+docker images									                        // shows all available docker images
+
+
+docker commit <container_name>							                // To create new image
+docker tag <container_name> <image_name>					            // To give name to created image
+docker commit <container_name> <image_name>					            // To create new image with specified name
