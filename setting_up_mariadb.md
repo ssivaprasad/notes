@@ -34,10 +34,18 @@ grant  all privileges ON hibernatedb.* TO 'hibernate'@'localhost' IDENTIFIED BY 
 **Create another roor user**
 
 create user 'admin'@'localhost' identified by 'admin';
-
-grant all privileges ON *.* TO 'hibernate'@'localhost';
-
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@localhost IDENTIFIED BY 'admin';
 FLUSH PRIVILEGES;
+
+
+
+*******
+MYSQL
+*******
+create user 'mysql'@'localhost' identified by 'mysql';
+GRANT ALL PRIVILEGES ON *.* TO 'mysql'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 
 
 https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges
