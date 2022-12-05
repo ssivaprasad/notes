@@ -31,7 +31,7 @@ create user 'hibernate'@'localhost' identified by 'hibernate';
 
 grant  all privileges ON hibernatedb.* TO 'hibernate'@'localhost' IDENTIFIED BY 'hibernate';
 
-**Create another roor user**
+**Create another root user**
 
 create user 'admin'@'localhost' identified by 'admin';
 
