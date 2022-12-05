@@ -38,3 +38,6 @@ create user 'admin'@'localhost' identified by 'admin';
 grant all privileges ON *.* TO 'hibernate'@'localhost';
 
 FLUSH PRIVILEGES;
+
+
+https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges
