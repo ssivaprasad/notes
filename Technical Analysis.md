@@ -1,9 +1,8 @@
 
 
----------------------------------------------------------------- Comparative Relative Strength --------------------------------------------------------------
+-------------------------------------- Comparative Relative Strength -----------------------------------------
 
-//NIFTYPVTBANK : Nifty Private Bank
-//CNXIT : Nifty IT
+//  NIFTYPVTBANK , CNXIT
 
 //@version=4
 study("Comparative Relative Strength", shorttitle="RS Comparative") 
